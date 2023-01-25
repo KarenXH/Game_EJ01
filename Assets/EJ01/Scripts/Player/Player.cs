@@ -79,7 +79,8 @@ public class Player : MonoBehaviour
         {
             AudioController.Ins.PlaySound(AudioController.Ins.jump);
         }
-        Instantiate(dust, transform.position, Quaternion.identity);
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y -0.3f, transform.position.z);
+        Instantiate(dust, pos, Quaternion.identity);
     }
 
     protected virtual void MovingHandle()

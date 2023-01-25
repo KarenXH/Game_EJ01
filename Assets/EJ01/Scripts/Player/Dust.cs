@@ -4,6 +4,7 @@ public class Dust : MonoBehaviour
 {
     public void StopDust()
     {
-        this.gameObject.SetActive(false);
+        Destroy(this.gameObject);
+        //this.gameObject.SetActive(false);
     }
 }
