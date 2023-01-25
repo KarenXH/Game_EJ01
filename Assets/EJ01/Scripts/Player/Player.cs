@@ -64,7 +64,9 @@ public class Player : MonoBehaviour
     {
         if (!GameManager.Ins || GameManager.Ins.state != GameState.Playing) return;
 
+       
         if (!rb || rb.velocity.y > 0 || !platformLanded) return;
+                
 
         if (platformLanded is BreakablePlatform)
         {
@@ -79,7 +81,8 @@ public class Player : MonoBehaviour
         {
             AudioController.Ins.PlaySound(AudioController.Ins.jump);
         }
-        Instantiate(dust, transform.position, Quaternion.identity);
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y -0.3f, transform.position.z);
+        Instantiate(dust, pos, Quaternion.identity);
     }
 
     protected virtual void MovingHandle()
