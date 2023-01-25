@@ -64,7 +64,9 @@ public class Player : MonoBehaviour
     {
         if (!GameManager.Ins || GameManager.Ins.state != GameState.Playing) return;
 
+       
         if (!rb || rb.velocity.y > 0 || !platformLanded) return;
+                
 
         if (platformLanded is BreakablePlatform)
         {

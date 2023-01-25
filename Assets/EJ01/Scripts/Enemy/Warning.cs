@@ -29,20 +29,39 @@ public class Warning : MonoBehaviour
             return;
         }        
         _isPlaying = true;
-        Debug.Log("can attack");
+        
     }
 
  
     IEnumerator SpawnWarning()
     {
-        if (_isPlaying == true)
+        if (_isPlaying == true && GameManager.Ins.Score > 200)
         {
             Vector3 pos = new Vector3(_target.transform.position.x, this.gameObject.transform.position.y -0.7f, this.gameObject.transform.position.z);
              GameObject warning = Instantiate(_spawn, pos, Quaternion.identity);
             
             warning.transform.SetParent(this.gameObject.transform);
+            yield return new WaitForSeconds(15f);
         }
-        yield return new WaitForSeconds(5f);
+
+        if (_isPlaying == true && GameManager.Ins.Score > 1000)
+        {
+            Vector3 pos = new Vector3(_target.transform.position.x, this.gameObject.transform.position.y - 0.7f, this.gameObject.transform.position.z);
+            GameObject warning = Instantiate(_spawn, pos, Quaternion.identity);
+
+            warning.transform.SetParent(this.gameObject.transform);
+            yield return new WaitForSeconds(10f);
+        }
+
+        if (_isPlaying == true && GameManager.Ins.Score > 1500)
+        {
+            Vector3 pos = new Vector3(_target.transform.position.x, this.gameObject.transform.position.y - 0.7f, this.gameObject.transform.position.z);
+            GameObject warning = Instantiate(_spawn, pos, Quaternion.identity);
+
+            warning.transform.SetParent(this.gameObject.transform);
+            yield return new WaitForSeconds(6f);
+        }
+        yield return new WaitForSeconds(0.5f);
         StartCoroutine(this.SpawnWarning());
     }
 
